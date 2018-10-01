@@ -67,7 +67,17 @@ exports.example2 = function(req, res) {
 
 function readFile(filename) {
     try {
-        var content = fs.readFileSync("./json-collator/public/example2Files/" + filename, 'utf8');
+        var path = "./json-collator/public/example2Files"
+        var content = fs.readFileSync(path + "/" + filename, 'utf8');
+
+        var pos = __dirname.lastIndexOf("\\");
+        var path2 = __dirname.substring(0, pos);
+
+        var content2 = fs.readFileSync(path2 + "\\public\\example2Files\\" + filename, 'utf8');
+
+        
+
+
         console.log("Leido fichero " + filename);
         return content;
     } catch (e) {
