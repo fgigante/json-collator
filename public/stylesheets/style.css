@@ -1,0 +1,23 @@
+body {
+  padding: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+br {
+  line-height: 0px;
+}
+
+.container {
+  width: 85%;
+}
+
+.jumbotron {
+  background: url('/images/keyboard_black.jpg') no-repeat center center;
+  height: auto;
+  padding: 6px;
+  color: white;
+}

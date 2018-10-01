@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  h4= title
+
+  form(method='POST' action='')
+    div.form-group
+      hr
+      label(for='jinstance') JSON instance:
+      if prev_instance
+        textarea#tainstance.form-control(type='text', placeholder='Enter Json content ...' name='jinstance' rows=7 required='true' ) #{prev_instance}
+      else
+        textarea#tainstance.form-control(type='text', placeholder='Enter Json content ...' name='jinstance' rows=7 required='true' )
+      br
+      label.btn.btn-default.btn-file
+        | Load file
+        input#fileInstance(name='fileInstance[]', style='display: none;', type='file')
+      hr
+      label(for='jschema') JSON schema:
+      if prev_schema
+        textarea#taschema.form-control(type='text', placeholder='Enter Json schema ...' name='jschema' rows=7 required='true' ) #{prev_schema}
+      else
+        textarea#taschema.form-control(type='text', placeholder='Enter Json schema ...' name='jschema' rows=7 required='true' )
+      br
+      label.btn.btn-default.btn-file
+        | Load file
+        input#fileSchema(name='fileSchema[]', style='display: none;', type='file')
+
+    button.btn.btn-primary(type='submit') Validate
+    | 
+    button.btn.btn-info(type='button', onclick='clearContent()') Clear
+    | 
+    button.btn.btn-default(type='button', onclick='loadExample1()') Load example #1
+    | 
+    button.btn.btn-default(type='button', onclick='loadExample2()') Load example #2
+
+  hr
+  if isCorrect == true
+    .alert.alert-success
+        strong Success!
+        |  #{valMessage}
+  else if isCorrect == false
+    .alert.alert-danger
+        strong Error!
+        |  #{valMessage}
+
+  hr
+  a(href='/general') Back to home page
