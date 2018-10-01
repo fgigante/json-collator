@@ -1,6 +1,6 @@
 var async = require('async');
 var Validator = require('jsonschema').Validator;
-var fs = require("fs");
+var utils = require('../utils');
 
 exports.index = function(req, res) {
     
@@ -51,8 +51,8 @@ exports.example2 = function(req, res) {
     
     var f_ins = [], f_sch = [];
     Promise.all([ 
-        f_ins = readFile("instance_ex.json"),
-        f_sch = readFile("schema_ex.json"),
+        f_ins = utils.readFile("instance_ex.json"),
+        f_sch = utils.readFile("schema_ex.json"),
     ])
     .then(function(){
         console.log("All Done!");
@@ -65,22 +65,3 @@ exports.example2 = function(req, res) {
     })
 };
 
-function readFile(filename) {
-    try {
-        var path = "./json-collator/public/example2Files"
-        var content = fs.readFileSync(path + "/" + filename, 'utf8');
-
-        var pos = __dirname.lastIndexOf("\\");
-        var path2 = __dirname.substring(0, pos);
-
-        var content2 = fs.readFileSync(path2 + "\\public\\example2Files\\" + filename, 'utf8');
-
-        
-
-
-        console.log("Leido fichero " + filename);
-        return content;
-    } catch (e) {
-        return e;
-    }
-}
