@@ -6,7 +6,7 @@ block content
   form(method='POST' action='')
     div.form-group
       hr
-      label(for='jinstance') JSON instance:
+      label(for='jinstance') JSON instance nuevo:
       if prev_instance
         textarea#tainstance.form-control(type='text', placeholder='Enter Json content ...' name='jinstance' rows=7 required='true' ) #{prev_instance}
       else
